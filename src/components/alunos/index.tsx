@@ -1,14 +1,14 @@
 import { Nome } from "../Nome";
-interface AlunosProps{
-    alunoNome: string;
-    changeName: (name: string) => void;
-}
-export function Alunos({alunoNome, changeName}:AlunosProps){
+import { UserContext } from "../../contexts/user";
+import { useContext } from "react";
+export function Alunos(){
+    const {qtdAlunos, mudaNome} = useContext(UserContext)
     return(
         <div>
-            <h3>Quantidade de alunos : 23</h3>
-            
-            <Nome nome={alunoNome} changeName={changeName}/>
+            <h3>Quantidade de alunos:{qtdAlunos}</h3>
+            <button onClick={()=> mudaNome("Sofia")}>Mudar nome para sofia</button>
+            <br/>
+            <Nome />
         </div>
     )
 }
